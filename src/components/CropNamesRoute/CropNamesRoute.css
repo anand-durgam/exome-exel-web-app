@@ -1,0 +1,13 @@
+
+
+.crops-table{
+    margin-left: 2%;
+    margin-top: 2%;
+    width: 30vw;
+}
+
+.import-and-dropdown-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
