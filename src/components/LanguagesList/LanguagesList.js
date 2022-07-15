@@ -4,8 +4,21 @@ import {MdDelete} from 'react-icons/md'
 import './LanguagesList.css'
 
 const LanguagesList = (props) => {
-    const {itemData} = props
+    const {itemData,deleteSelectedArray} = props
     const {id,value} = itemData
+
+    //  delete functionality on checking check-box
+    const onClickCheckBox = (e) => {
+    
+      if (e.target.checked === true){
+          deleteSelectedArray.push(id)
+      }else{
+          const indexOfElement = deleteSelectedArray.indexOf(id)
+          deleteSelectedArray.splice(indexOfElement,1)
+      }
+
+      // console.log(deleteSelectedArray) 
+  }
 
     // //////////////////////////////////////////////////
     const [show, setShow] = useState(false);
@@ -41,7 +54,7 @@ const LanguagesList = (props) => {
     return(
       <>
         <tr>
-          <td><input type="checkbox" className='delete-check-box' /></td>
+          <td><input type="checkbox" className='delete-check-box' onChange={onClickCheckBox} /></td>
           <td>{id}</td>
           <td>{value}</td>
           <td className='delete-button'><MdDelete onClick={onDeleteId}/></td>

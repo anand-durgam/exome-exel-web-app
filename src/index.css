@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.delete-check-box{
+  cursor: pointer;
+  width: 5mm;
+  height: 6mm;
+}
+
+.delete-selected-container{
+  display: flex;
+  flex-direction: row;
+  /* border-style: solid; */
+  margin-top: 20px;
+
+}
+
+.delete-selected-btn{
+  margin-left: 25px;
+  background-color: aquamarine;
+  border-style: none;
+  border-radius: 5px;
+  width: 40mm;
+  height: 10mm;
+  font-weight: 600;
+  cursor: pointer;
+}

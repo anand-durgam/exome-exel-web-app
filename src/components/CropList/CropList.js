@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import { useState } from "react";
 
 const CropList = (props) => {
-    const {item} = props
+    const {item , deleteSelectedArray} = props
 
     // //////////////////////////////////////////////////
     const [show, setShow] = useState(false);
@@ -12,6 +12,22 @@ const CropList = (props) => {
         setShow(false);
         window.location.reload()
     }
+    // ////////////////////////////////////////////////////
+
+     //  delete functionality on checking check-box
+     const onClickCheckBox = (e) => {
+    
+        if (e.target.checked === true){
+            deleteSelectedArray.push(item.id)
+        }else{
+            const indexOfElement = deleteSelectedArray.indexOf(item.id)
+            deleteSelectedArray.splice(indexOfElement,1)
+        }
+  
+        // console.log(array) 
+    }
+
+    // //////////////////////////////////////////////////////////// 
 
     const onDeleteId = () => {
         // console.log("id value   " + item.id)
@@ -40,7 +56,7 @@ const CropList = (props) => {
     return(
         <>
         <tr key={item.id}>
-        <td><input type="checkbox" className='delete-check-box' /></td>
+        <td><input type="checkbox" className='delete-check-box' onChange={onClickCheckBox} /></td>
             <td>{item.id}</td>
             <td>{item.value}</td>
             <td className='delete-button'><MdDelete onClick={onDeleteId}/></td>

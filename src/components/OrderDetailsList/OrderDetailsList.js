@@ -3,7 +3,19 @@ import Modal from 'react-bootstrap/Modal'
 import { useState } from "react";
 
 const OrderDetailsList = (props) => {
-    const {item} = props
+    const {item , deleteSelectedArray} = props
+
+    const onClickCheckBox = (e) => {
+    
+        if (e.target.checked === true){
+            deleteSelectedArray.push(item.id)
+        }else{
+            const indexOfElement = deleteSelectedArray.indexOf(item.id)
+            deleteSelectedArray.splice(indexOfElement,1)
+        }
+
+        // console.log(deleteSelectedArray) 
+    }
 
     // //////////////////////////////////////////////////
     const [show, setShow] = useState(false);
@@ -33,14 +45,14 @@ const OrderDetailsList = (props) => {
           // .then(function(jsonData) {
           //   console.log(jsonData);
           // });
-          setShow(true)
+        //   setShow(true)
     }
 
     
     return(
         <>
         <tr key={item.id}>
-        <td><input type="checkbox" className='delete-check-box' /></td>
+        <td><input type="checkbox" className='delete-check-box' onChange={onClickCheckBox} /></td>
             <td>{item.id}</td>
             <td>{item.headquarters_name}</td>
             <td>{item.headquarters_contact_number}</td>
